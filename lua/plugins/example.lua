@@ -10,13 +10,13 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  { "catppuccin/nvim" },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "catppuccin",
     },
   },
 
@@ -148,6 +148,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "php",
         "query",
         "regex",
         "tsx",
@@ -207,6 +208,12 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "graphql",
+        "emmet_ls",
+        "html",
+        "cssls",
+        "tailwindcss",
+        "php-cs-fixer",
       },
     },
   },
