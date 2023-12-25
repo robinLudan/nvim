@@ -16,7 +16,7 @@ keymap.set("n", "<tab>", ":bnext<cr>", opts)
 keymap.set("n", "<s-tab>", ":bprevious<cr>", opts)
 
 -- clearing search
-keymap.set({ "n", "i" }, "<leader>nh", ":noh<cr><esc>", opts)
+keymap.set("n", "<leader>nh", ":noh<cr><esc>", opts)
 
 -- new file
 keymap.set("n", "<leader>nw", "<cmd>enew<cr>", { desc = "New File" })
