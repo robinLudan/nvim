@@ -11,12 +11,15 @@ keymap.set("i", "jk", "<ESC>")
 -- select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- new tab
-keymap.set("n", "te", ":tabedit", opts)
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+-- buffer control
+keymap.set("n", "<tab>", ":bnext<cr>", opts)
+keymap.set("n", "<s-tab>", ":bprevious<cr>", opts)
 
-keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
+-- clearing search
+keymap.set({ "n", "i" }, "<leader>nh", ":noh<cr><esc>", opts)
+
+-- new file
+keymap.set("n", "<leader>nw", "<cmd>enew<cr>", { desc = "New File" })
 
 keymap.set("n", "x", '"_x')
 
