@@ -10,8 +10,11 @@ keymap.set("i", "jk", "<ESC>")
 
 -- select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+
 -- new tab
+keymap.set("n", "te", ":tabedit", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
+keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", opts)
 
@@ -24,4 +27,5 @@ keymap.set("n", "<leader>-", "<C-x>")
 keymap.set("n", "<leader>sv", "<C-w>v", opts)
 keymap.set("n", "<leader>sh", "<C-w>s", opts)
 keymap.set("n", "<leader>se", "<C-w>=", opts)
+keymap.set("n", "<leader>ma", "<C-w>|", opts)
 keymap.set("n", "<leader>sx", ":close<CR>", opts)
