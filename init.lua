@@ -560,7 +560,23 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        phpactor = {},
+        intelephense = {},
+        phpactor = {
+          on_attach = function(client)
+            client.server_capabilities.completionProvider = false
+            client.server_capabilities.hoverProvider = false
+            client.server_capabilities.implementationProvider = false
+            client.server_capabilities.referencesProvider = false
+            client.server_capabilities.selectionRangeProvider = false
+            client.server_capabilities.signatureHelpProvider = false
+            client.server_capabilities.typeDefinitionProvider = false
+            client.server_capabilities.workspaceSymbolProvider = false
+            client.server_capabilities.definitionProvider = false
+            client.server_capabilities.documentSymbolProvider = false
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
+        },
         html = {},
         cssls = {},
         graphql = {},
@@ -720,6 +736,7 @@ require('lazy').setup({
       --  nvim-cmp does not ship with all sources by default. They are split
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
     },
@@ -771,6 +788,7 @@ require('lazy').setup({
         sources = {
           { name = 'nvim_lsp' }, --lsp
           { name = 'luasnip' }, -- snippets
+          { name = 'nvim_lsp_signature_help' },
           { name = 'buffer' }, -- text within current buffer
           { name = 'path' }, -- file system path
         },
