@@ -736,6 +736,7 @@ require('lazy').setup({
         },
       },
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind-nvim',
 
       -- Adds other completion capabilities.
       --  nvim-cmp does not ship with all sources by default. They are split
@@ -749,8 +750,11 @@ require('lazy').setup({
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
+      -- for custom snippets
+      require('luasnip.loaders.from_snipmate').lazy_load()
       cmp.setup {
         snippet = {
           expand = function(args)
@@ -758,6 +762,10 @@ require('lazy').setup({
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
+
+        -- formatting = {
+        --   format = lspkind.cmp_format(),
+        -- },
 
         mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
@@ -780,6 +788,13 @@ require('lazy').setup({
           --['<Tab>'] = cmp.mapping.select_next_item(),
           --['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
