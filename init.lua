@@ -164,7 +164,14 @@ opt.iskeyword:append '-'
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
 keymap.set('i', 'jk', '<ESC>')
+
+-- split windows
+keymap.set('n', '<leader>sv', '<C-w>v', opts)
+keymap.set('n', '<leader>sh', '<C-w>s', opts)
+keymap.set('n', '<leader>se', '<C-w>=', opts)
+keymap.set('n', '<leader>sx', ':close<CR>', opts)
 
 -- Set highlight on search, but clear on pressing <leader>nh in normal mode
 opt.hlsearch = true
