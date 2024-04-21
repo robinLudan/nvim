@@ -158,6 +158,9 @@ opt.scrolloff = 10
 opt.spell = true
 opt.spelllang = 'en'
 
+-- word with - is considered a single word when deleting,changing etc
+opt.iskeyword:append '-'
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 local keymap = vim.keymap
@@ -580,7 +583,9 @@ require('lazy').setup({
         html = {},
         cssls = {},
         graphql = {},
-        volar = {},
+        volar = {
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+        },
         tailwindcss = {},
         yamlls = {},
         -- clangd = {},
@@ -953,7 +958,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
