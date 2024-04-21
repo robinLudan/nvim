@@ -568,11 +568,9 @@ require('lazy').setup({
           on_attach = function(client)
             client.server_capabilities.completionProvider = false
             client.server_capabilities.hoverProvider = false
-            client.server_capabilities.implementationProvider = false
             client.server_capabilities.referencesProvider = false
             client.server_capabilities.selectionRangeProvider = false
             client.server_capabilities.signatureHelpProvider = false
-            client.server_capabilities.typeDefinitionProvider = false
             client.server_capabilities.workspaceSymbolProvider = false
             client.server_capabilities.definitionProvider = false
             client.server_capabilities.documentSymbolProvider = false
