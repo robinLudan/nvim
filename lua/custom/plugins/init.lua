@@ -17,4 +17,15 @@ return { -- short plugins that don't need much configuration (if any)
     'jwalton512/vim-blade',
     ft = 'blade',
   },
+  { -- changes the working directory to the project root
+    'airblade/vim-rooter',
+    init = function()
+      -- Instead of this running every time we open a file, we'll just run it once when Vim starts.
+      vim.g.rooter_manual_only = 1
+      vim.g.rooter_patterns = { '.git', 'composer.json' }
+    end,
+    config = function()
+      vim.cmd 'Rooter'
+    end,
+  },
 }
