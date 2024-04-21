@@ -1,11 +1,11 @@
-return { -- run test with speed of light
+return { -- run tests with speed of thought xD
   'vim-test/vim-test',
   keys = {
-    { '<Leader>tn', ':TestNearest<CR>' },
-    { '<Leader>tf', ':TestFile<CR>' },
-    { '<Leader>ts', ':TestSuite<CR>' },
-    { '<Leader>tl', ':TestLast<CR>' },
-    { '<Leader>tv', ':TestVisit<CR>' },
+    { '<Leader>tn', ':TestNearest<CR>', desc = '[T]est [N]earest' },
+    { '<Leader>tf', ':TestFile<CR>', desc = '[T]est [F]ile' },
+    { '<Leader>ts', ':TestSuite<CR>', desc = '[T]est [S]uite' },
+    { '<Leader>tl', ':TestLast<CR>', desc = '[T]est [L]ast' },
+    { '<Leader>tv', ':TestVisit<CR>', desc = '[T]est [V]isit' },
   },
   dependencies = { 'voldikss/vim-floaterm' },
   config = function()
