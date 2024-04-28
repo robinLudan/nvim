@@ -691,7 +691,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, blade = true }
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -796,34 +796,16 @@ require('lazy').setup({
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
 
+        -- rounded corners
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+
         ---@diagnostic disable-next-line: missing-fields
         formatting = {
-          fields = { 'kind', 'abbr', 'menu' },
           format = lspkind.cmp_format {
-            mode = 'symbol',
-            -- See: https://www.reddit.com/r/neovim/comments/103zetf/how_can_i_get_a_vscodelike_tailwind_css/
-            before = function(entry, vim_item)
-              -- Replace the 'menu' field with the kind and source
-              vim_item.menu = '  ' .. vim_item.kind .. ' (' .. (source_map[entry.source.name] or entry.source.name) .. ')'
-              vim_item.menu_hl_group = 'SpecialComment'
-
-              vim_item.abbr = ltrim(vim_item.abbr)
-
-              if vim_item.kind == 'Color' and entry.completion_item.documentation then
-                local _, _, r, g, b = string.find(entry.completion_item.documentation, '^rgb%((%d+), (%d+), (%d+)')
-                if r then
-                  local color = string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
-                  local group = 'Tw_' .. color
-                  if vim.fn.hlID(group) < 1 then
-                    vim.api.nvim_set_hl(0, group, { fg = '#' .. color })
-                  end
-                  vim_item.kind_hl_group = group
-                  return vim_item
-                end
-              end
-
-              return vim_item
-            end,
+            maxwidth = 50,
           },
         },
 
