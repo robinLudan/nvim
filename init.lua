@@ -772,20 +772,6 @@ require('lazy').setup({
       local lspkind = require 'lspkind'
       luasnip.config.setup {}
 
-      local source_map = {
-        buffer = 'Buffer',
-        nvim_lsp = 'LSP',
-        nvim_lsp_signature_help = 'Signature',
-        luasnip = 'LuaSnip',
-        nvim_lua = 'Lua',
-        path = 'Path',
-        copilot = 'Copilot',
-      }
-
-      local function ltrim(s)
-        return s:match '^%s*(.*)'
-      end
-
       -- for custom snippets
       require('luasnip.loaders.from_snipmate').lazy_load()
       cmp.setup {
