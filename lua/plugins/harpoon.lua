@@ -13,7 +13,7 @@ return {
         function()
           require('harpoon'):list():add()
         end,
-        desc = 'harpoon mark',
+        desc = 'harpoon [A]dd',
       },
       {
         '<leader>l',

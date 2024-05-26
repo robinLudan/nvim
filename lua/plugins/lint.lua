@@ -6,6 +6,7 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
+        php = { 'phpstan' },
         markdown = { 'markdownlint' },
       }
 
@@ -50,6 +51,10 @@ return {
           require('lint').try_lint()
         end,
       })
+
+      vim.keymap.set('n', '<leader>tl', function()
+        lint.try_lint()
+      end, { desc = '[T]rigger [L]inting for current file' })
     end,
   },
 }
