@@ -177,6 +177,10 @@ return { -- LSP Configuration & Plugins
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
+        init_options = {
+          ['language_server_phpstan.enabled'] = false,
+          ['language_server_psalm.enabled'] = false,
+        },
       },
       html = {},
       cssls = {},
