@@ -40,6 +40,16 @@ return { -- Autocompletion
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     local lspkind = require 'lspkind'
+
+    local source_map = {
+      buffer = 'Buffer',
+      nvim_lsp = 'LSP',
+      nvim_lsp_signature_help = 'Signature',
+      luasnip = 'LuaSnip',
+      nvim_lua = 'Lua',
+      path = 'Path',
+    }
+
     luasnip.config.setup {}
 
     -- for custom snippets
@@ -52,16 +62,51 @@ return { -- Autocompletion
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
 
+      view = {
+        entries = { name = 'custom', selection_order = 'near_cursor' },
+      },
       -- rounded corners
       window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
       },
 
       ---@diagnostic disable-next-line: missing-fields
       formatting = {
+        fields = { 'kind', 'abbr', 'menu' },
         format = lspkind.cmp_format {
-          maxwidth = 50,
+          mode = 'symbol', -- show only symbol annotations
+          maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+          -- can also be a function to dynamically calculate max width such as
+          -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+          ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+          symbol_map = {
+            Text = '',
+            Method = '󰆧',
+            Function = '󰊕',
+            Constructor = '',
+            Field = '󰇽',
+            Variable = '󰂡',
+            -- Class = '󰠱',
+            Class = ' ',
+            Interface = '',
+            Module = '',
+            Property = '󰜢',
+            Unit = '',
+            Value = '󰎠',
+            Enum = '',
+            Keyword = '󰌋',
+            Snippet = '',
+            Color = '󰏘',
+            File = '󰈙',
+            Reference = '',
+            Folder = '󰉋',
+            EnumMember = '',
+            Constant = '󰏿',
+            Struct = '',
+            Event = '',
+            Operator = '󰆕',
+            TypeParameter = '󰅲 ',
+          },
         },
       },
 
