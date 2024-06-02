@@ -17,9 +17,6 @@ opt.showmode = false
 --  See `:help 'clipboard'`
 opt.clipboard = 'unnamedplus'
 
--- Enable break indent
-opt.breakindent = true
-
 -- Save undo history
 opt.undofile = true
 
@@ -40,12 +37,6 @@ opt.timeoutlen = 300
 -- Configure how new splits should be opened
 opt.splitright = true
 opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
-opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 opt.inccommand = 'split'
@@ -68,3 +59,11 @@ opt.hlsearch = true
 -- appearance
 opt.termguicolors = true
 opt.background = 'dark'
+
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.smartindent = true
+opt.breakindent = true -- maintain indent when wrapping indented lines
+opt.linebreak = true -- wrap at word boundaries
