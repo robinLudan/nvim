@@ -190,8 +190,8 @@ return { -- LSP Configuration & Plugins
       },
       tailwindcss = {},
       yamlls = {},
+      gopls = {},
       -- clangd = {},
-      -- gopls = {},
       -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -238,6 +238,8 @@ return { -- LSP Configuration & Plugins
       'prettierd',
       'shfmt',
       'blade-formatter',
+      'gofumpt',
+      'goimports',
       -- linters
       'phpstan',
       'markdownlint',

@@ -39,6 +39,7 @@ return { -- Autoformat
       javascript = { 'prettierd' },
       typescript = { 'prettierd' },
       markdown = { 'prettierd' },
+      go = { 'goimports', 'gofumpt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
