@@ -243,6 +243,7 @@ return { -- LSP Configuration & Plugins
       -- linters
       'phpstan',
       'markdownlint',
+      'golangci-lint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
