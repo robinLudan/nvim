@@ -13,6 +13,7 @@ return {
   keys = {
     { '<leader>ot', ':ObsidianToday<CR>', { desc = '[O]bisidian [T]oday' } },
     { '<leader>on', ':ObsidianNew<CR>', { desc = '[O]bisidian [N]ew' } },
+    { '<leader>os', ':ObsidianSearch<CR>', { desc = '[O]bisidian [S]earch' } },
   },
   dependencies = {
     -- Required.
