@@ -35,6 +35,7 @@ return { -- Autoformat
       scss = { 'prettierd' },
       graphql = { 'prettierd' },
       json = { 'prettierd' },
+      jsonc = { 'prettierd' },
       yaml = { 'prettierd' },
       javascript = { 'prettierd' },
       typescript = { 'prettierd' },
