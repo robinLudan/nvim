@@ -184,7 +184,11 @@ return { -- LSP Configuration & Plugins
       },
       html = {},
       cssls = {},
-      graphql = {},
+      graphql = {
+        root_dir = function(fname)
+          return require('lspconfig.util').root_pattern('.graphqlconfig', 'package.json', 'graphqlrc', 'graphqlrc.js', 'graphqlrc.ts')(fname)
+        end,
+      },
       volar = {
         filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
       },
