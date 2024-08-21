@@ -26,8 +26,13 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { 'stylua' },
       sh = { 'shfmt' },
-      -- php = { { "pint", "pretty-php" } },
-      php = { 'pretty-php' },
+      php = function(bufnr)
+        if require('conform').get_formatter_info('pint', bufnr).available then
+          return { 'pint' }
+        else
+          return { 'pretty-php' }
+        end
+      end,
       blade = { 'blade-formatter' },
       vue = { 'prettierd' },
       html = { 'prettierd' },
@@ -41,12 +46,6 @@ return { -- Autoformat
       typescript = { 'prettierd' },
       markdown = { 'prettierd' },
       go = { 'goimports', 'gofumpt' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      -- javascript = { { "prettierd", "prettier" } },
     },
     formatters = {
       pint = {
