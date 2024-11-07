@@ -46,6 +46,8 @@ return { -- Autoformat
       typescript = { 'prettierd' },
       markdown = { 'prettierd' },
       go = { 'goimports', 'gofumpt' },
+      javascriptreact = { 'prettierd' },
+      typescriptreact = { 'prettierd' },
     },
     formatters = {
       pint = {

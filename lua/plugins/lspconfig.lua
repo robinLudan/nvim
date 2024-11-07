@@ -189,8 +189,8 @@ return { -- LSP Configuration & Plugins
           return require('lspconfig.util').root_pattern('.graphqlconfig', 'package.json', 'graphqlrc', 'graphqlrc.js', 'graphqlrc.ts')(fname)
         end,
       },
-      volar = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+      eslint = {
+        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
       },
       tailwindcss = {},
       yamlls = {},
@@ -247,6 +247,7 @@ return { -- LSP Configuration & Plugins
       -- linters
       'phpstan',
       'markdownlint',
+      'eslint',
       'golangci-lint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
