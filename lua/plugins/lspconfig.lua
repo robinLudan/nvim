@@ -184,13 +184,18 @@ return { -- LSP Configuration & Plugins
       },
       html = {},
       cssls = {},
-      graphql = {
-        root_dir = function(fname)
-          return require('lspconfig.util').root_pattern('.graphqlconfig', 'package.json', 'graphqlrc', 'graphqlrc.js', 'graphqlrc.ts')(fname)
-        end,
-      },
-      eslint = {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+      graphql = {},
+      eslint = {},
+      emmet_ls = {
+        filetypes = { 'css', 'eruby', 'html', 'javascript', 'javascriptreact', 'less', 'sass', 'scss', 'svelte', 'pug', 'typescriptreact', 'vue' },
+        init_options = {
+          html = {
+            options = {
+              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+              ['bem.enabled'] = true,
+            },
+          },
+        },
       },
       tailwindcss = {},
       yamlls = {},
@@ -204,7 +209,7 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- tsserver = {},
+      -- ts_ls = {},
       --
 
       lua_ls = {
@@ -247,7 +252,6 @@ return { -- LSP Configuration & Plugins
       -- linters
       'phpstan',
       'markdownlint',
-      'eslint',
       'golangci-lint',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
